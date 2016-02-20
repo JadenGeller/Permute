@@ -50,3 +50,9 @@ public func ==<C: MutableCollectionType where C.Generator.Element: Equatable>(lh
     return lhs.count == rhs.count && zip(lhs, rhs).reduce(true) { $0 && $1.0 == $1.1 }
 }
 
+extension PermuteCollection where Base: MutableCollectionType {
+    public init(_ collection: MutablePermuteCollection<Base>) {
+        self.base = collection.base
+        self.permutation = collection.permutation
+    }
+}

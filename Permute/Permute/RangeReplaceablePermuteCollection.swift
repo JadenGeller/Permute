@@ -123,3 +123,18 @@ extension RangeReplaceablePermuteCollection: CustomStringConvertible {
 public func ==<C: RangeReplaceableCollectionType, P: PermutationType where P.Index == C.Index, C.Generator.Element: Equatable>(lhs: RangeReplaceablePermuteCollection<C>, rhs: RangeReplaceablePermuteCollection<C>) -> Bool {
     return lhs.count == rhs.count && zip(lhs, rhs).reduce(true) { $0 && $1.0 == $1.1 }
 }
+
+extension PermuteCollection where Base: RangeReplaceableCollectionType, Base.Index: BidirectionalIndexType, Base.Index: Comparable, Base.Index.Distance == Int {
+    public init(_ collection: RangeReplaceablePermuteCollection<Base>) {
+        self.base = collection.base
+        self.permutation = collection.permutation
+    }
+}
+
+extension MutablePermuteCollection where Base: RangeReplaceableCollectionType, Base.Index: BidirectionalIndexType, Base.Index: Comparable, Base.Index.Distance == Int {
+    public init(_ collection: RangeReplaceablePermuteCollection<Base>) {
+        self.base = collection.base
+        self.permutation = collection.permutation
+    }
+}
+
