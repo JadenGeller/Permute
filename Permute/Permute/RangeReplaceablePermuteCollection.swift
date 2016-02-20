@@ -12,56 +12,56 @@ extension RangeReplaceableCollectionType where Index: BidirectionalIndexType, In
     }
 }
 
-public struct RangeReplaceablePermuteCollection<Collection: RangeReplaceableCollectionType where Collection.Index: BidirectionalIndexType, Collection.Index: Comparable, Collection.Index.Distance == Int> {
-    internal var backing: Collection
-    public var permutation: AnyPermuatation<Collection.Index>
+public struct RangeReplaceablePermuteCollection<Base: RangeReplaceableCollectionType where Base.Index: BidirectionalIndexType, Base.Index: Comparable, Base.Index.Distance == Int> {
+    public var base: Base
+    public var permutation: AnyPermuatation<Base.Index>
     
-    public init<P: PermutationType where P.Index == Collection.Index>(_ collection: Collection, withPermutation permutation: P) {
-        self.backing = collection
+    public init<P: PermutationType where P.Index == Base.Index>(_ collection: Base, withPermutation permutation: P) {
+        self.base = collection
         self.permutation = AnyPermuatation(permutation)
     }
 
 }
 
 extension RangeReplaceablePermuteCollection: MutableCollectionType {
-    public var startIndex: Collection.Index {
-        return backing.startIndex
+    public var startIndex: Base.Index {
+        return base.startIndex
     }
     
-    public var endIndex: Collection.Index {
-        return backing.endIndex
+    public var endIndex: Base.Index {
+        return base.endIndex
     }
     
-    public subscript(index: Collection.Index) -> Collection.Generator.Element {
+    public subscript(index: Base.Index) -> Base.Generator.Element {
         get {
             print("\(index) -> \(permutation[index])")
-            return backing[permutation[index]]
+            return base[permutation[index]]
         }
         set {
             let index = permutation[index]
-            backing.replaceRange(index...index, with: [newValue])
+            base.replaceRange(index...index, with: [newValue])
         }
     }
 }
 
 extension RangeReplaceablePermuteCollection: RangeReplaceableCollectionType {
     public init() {
-        self.init(Collection(), withPermutation: IdentityPermutation())
+        self.init(Base(), withPermutation: IdentityPermutation())
     }
     
-    public mutating func replaceRange<C : CollectionType where C.Generator.Element == Collection.Generator.Element>(subRange: Range<Collection.Index>, with newElements: C) {
+    public mutating func replaceRange<C : CollectionType where C.Generator.Element == Base.Generator.Element>(subRange: Range<Base.Index>, with newElements: C) {
         
         // Update all elements in the overlapping ranges, adding elements and recording which to delete
         var newElementIndexGenerator = newElements.indices.generate()
         var subRangeIndexGenerator = subRange.indices.generate()
         var delta = 0
-        var indicesToRemove: [Collection.Index] = []
+        var indicesToRemove: [Base.Index] = []
         loop: while true {
             switch (newElementIndexGenerator.next(), subRangeIndexGenerator.next()) {
             case let (newElementIndex?, subRangeIndex?):
                 self[subRangeIndex] = newElements[newElementIndex]
             case let (newElementIndex?, nil):
-                backing.append(newElements[newElementIndex])
+                base.append(newElements[newElementIndex])
                 delta += 1
             case let (nil, subRangeIndex?):
                 indicesToRemove.append(permutation[subRangeIndex])
@@ -70,11 +70,11 @@ extension RangeReplaceablePermuteCollection: RangeReplaceableCollectionType {
             }
         }
         // Delete in reverse order so the indexes don't change.
-        indicesToRemove.sort().reverse().forEach { backing.removeAtIndex($0) }
+        indicesToRemove.sort().reverse().forEach { base.removeAtIndex($0) }
         
         if delta > 0 {
             // Account for inserted elements
-            let endIndex = backing.endIndex
+            let endIndex = base.endIndex
             let addedElementsRange = subRange.endIndex..<subRange.endIndex.advancedBy(delta)
             let oldPermutation = permutation
             permutation = AnyPermuatation { index in

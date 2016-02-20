@@ -12,30 +12,30 @@ extension MutableCollectionType {
     }
 }
 
-public struct MutablePermuteCollection<Collection: MutableCollectionType> {
-    internal var backing: Collection
-    public var permutation: AnyPermuatation<Collection.Index>
+public struct MutablePermuteCollection<Base: MutableCollectionType> {
+    public var base: Base
+    public var permutation: AnyPermuatation<Base.Index>
     
-    public init<P: PermutationType where P.Index == Collection.Index>(_ collection: Collection, withPermutation permutation: P) {
-        self.backing = collection
+    public init<P: PermutationType where P.Index == Base.Index>(_ collection: Base, withPermutation permutation: P) {
+        self.base = collection
         self.permutation = AnyPermuatation(permutation)
     }
 }
 
 extension MutablePermuteCollection: MutableCollectionType {
-    public var startIndex: Collection.Index {
-        return backing.startIndex
+    public var startIndex: Base.Index {
+        return base.startIndex
     }
     
-    public var endIndex: Collection.Index {
-        return backing.endIndex
+    public var endIndex: Base.Index {
+        return base.endIndex
     }
     
-    public subscript(index: Collection.Index) -> Collection.Generator.Element {
+    public subscript(index: Base.Index) -> Base.Generator.Element {
         get {
-            return backing[permutation[index]]
+            return base[permutation[index]]
         } set {
-            backing[permutation[index]] = newValue
+            base[permutation[index]] = newValue
         }
     }
 }
