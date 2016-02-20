@@ -22,7 +22,7 @@ public struct PermuteCollection<Base: CollectionType> {
     }
 }
 
-extension PermuteCollection: CollectionType {
+extension PermuteCollection: PermuteCollectionType {
     public var startIndex: Base.Index {
         return base.startIndex
     }

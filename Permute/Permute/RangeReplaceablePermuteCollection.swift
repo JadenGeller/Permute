@@ -23,7 +23,7 @@ public struct RangeReplaceablePermuteCollection<Base: RangeReplaceableCollection
 
 }
 
-extension RangeReplaceablePermuteCollection: MutableCollectionType {
+extension RangeReplaceablePermuteCollection: PermuteCollectionType, MutableCollectionType {
     public var startIndex: Base.Index {
         return base.startIndex
     }
