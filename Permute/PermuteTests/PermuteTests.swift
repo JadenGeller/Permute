@@ -11,20 +11,20 @@ import XCTest
 
 class PermuteTests: XCTestCase {
     func testRangeReplaceableSetIndex() {
-        var collection = RangeReplaceablePermuteCollection([1, 1, 1, 1], withPermutation: IdentityPermutation())
+        var collection = [1, 1, 1, 1].permute(IdentityPermutation())
         collection[2] = 100
         XCTAssertEqual([1, 1, 100, 1], Array(collection))
     }
 
     func testRangeReplacementSameSize() {
-        var collection = RangeReplaceablePermuteCollection([5, 10, 15, 20], withPermutation: SequencedPermuation(indices: [3, 1, 0, 2]))
+        var collection = [5, 10, 15, 20].permute(SequencedPermuation(indices: [3, 1, 0, 2]))
         XCTAssertEqual([20, 10, 5, 15], Array(collection))
         collection.replaceRange(1...3, with: [2, 3, 4])
         XCTAssertEqual([20, 2, 3, 4], Array(collection))
     }
     
     func testRangeReplacementShorter() {
-        var collection = RangeReplaceablePermuteCollection([5, 10, 15, 20], withPermutation: SequencedPermuation(indices: [3, 1, 0, 2]))
+        var collection = [5, 10, 15, 20].permute(SequencedPermuation(indices: [3, 1, 0, 2]))
         XCTAssertEqual([20, 10, 5, 15], Array(collection))
         collection.replaceRange(1...3, with: [0, 1])
         XCTAssertEqual([1, 0, 20], collection.base)
@@ -32,7 +32,7 @@ class PermuteTests: XCTestCase {
     }
     
     func testRangeReplacementLonger() {
-        var collection = RangeReplaceablePermuteCollection([5, 10, 15, 20], withPermutation: SequencedPermuation(indices: [3, 1, 0, 2]))
+        var collection = [5, 10, 15, 20].permute(SequencedPermuation(indices: [3, 1, 0, 2]))
         XCTAssertEqual([20, 10, 5, 15], Array(collection))
         collection.replaceRange(1...2, with: [0, 1, 2, 3])
         XCTAssertEqual([1, 0, 15, 20, 2, 3], collection.base)
@@ -40,7 +40,7 @@ class PermuteTests: XCTestCase {
     }
     
     func testMultipleReplacements() {
-        var collection = RangeReplaceablePermuteCollection([5, 10, 15, 20], withPermutation: SequencedPermuation(indices: [3, 1, 0, 2]))
+        var collection = [5, 10, 15, 20].permute(SequencedPermuation(indices: [3, 1, 0, 2]))
         XCTAssertEqual([20, 10, 5, 15], Array(collection))
         collection.replaceRange(1...2, with: [100, 200, 300, 400])
         XCTAssertEqual([20, 100, 200, 300, 400, 15], Array(collection))
