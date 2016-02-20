@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		4D71B57C1C77F78A0077E26D /* Permute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D71B5711C77F78A0077E26D /* Permute.framework */; };
 		4D71B5811C77F78A0077E26D /* PermuteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71B5801C77F78A0077E26D /* PermuteTests.swift */; };
-		4D71B5921C77F8100077E26D /* Permutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D71B5911C77F8100077E26D /* Permutation.swift */; };
-		4DCC11E01C78F4110087D4A8 /* MutablePermuteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC11DF1C78F4110087D4A8 /* MutablePermuteCollection.swift */; };
-		4DCC11E21C78F41A0087D4A8 /* RangeReplaceablePermuteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC11E11C78F41A0087D4A8 /* RangeReplaceablePermuteCollection.swift */; };
-		4DCC11E41C78F4310087D4A8 /* PermuteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC11E31C78F4310087D4A8 /* PermuteCollection.swift */; };
-		4DCC11F01C78FAAD0087D4A8 /* PermuteCollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC11EF1C78FAAD0087D4A8 /* PermuteCollectionType.swift */; };
+		4DCC120F1C790CB50087D4A8 /* MutablePermuteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC120A1C790CB50087D4A8 /* MutablePermuteCollection.swift */; };
+		4DCC12101C790CB50087D4A8 /* Permutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC120B1C790CB50087D4A8 /* Permutation.swift */; };
+		4DCC12111C790CB50087D4A8 /* PermuteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC120C1C790CB50087D4A8 /* PermuteCollection.swift */; };
+		4DCC12121C790CB50087D4A8 /* PermuteCollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC120D1C790CB50087D4A8 /* PermuteCollectionType.swift */; };
+		4DCC12131C790CB50087D4A8 /* RangeReplaceablePermuteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC120E1C790CB50087D4A8 /* RangeReplaceablePermuteCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,11 +32,11 @@
 		4D71B57B1C77F78A0077E26D /* PermuteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PermuteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D71B5801C77F78A0077E26D /* PermuteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermuteTests.swift; sourceTree = "<group>"; };
 		4D71B5821C77F78A0077E26D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D71B5911C77F8100077E26D /* Permutation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Permutation.swift; sourceTree = "<group>"; };
-		4DCC11DF1C78F4110087D4A8 /* MutablePermuteCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutablePermuteCollection.swift; sourceTree = "<group>"; };
-		4DCC11E11C78F41A0087D4A8 /* RangeReplaceablePermuteCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeReplaceablePermuteCollection.swift; sourceTree = "<group>"; };
-		4DCC11E31C78F4310087D4A8 /* PermuteCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermuteCollection.swift; sourceTree = "<group>"; };
-		4DCC11EF1C78FAAD0087D4A8 /* PermuteCollectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermuteCollectionType.swift; sourceTree = "<group>"; };
+		4DCC120A1C790CB50087D4A8 /* MutablePermuteCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MutablePermuteCollection.swift; path = ../../Sources/MutablePermuteCollection.swift; sourceTree = "<group>"; };
+		4DCC120B1C790CB50087D4A8 /* Permutation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Permutation.swift; path = ../../Sources/Permutation.swift; sourceTree = "<group>"; };
+		4DCC120C1C790CB50087D4A8 /* PermuteCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PermuteCollection.swift; path = ../../Sources/PermuteCollection.swift; sourceTree = "<group>"; };
+		4DCC120D1C790CB50087D4A8 /* PermuteCollectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PermuteCollectionType.swift; path = ../../Sources/PermuteCollectionType.swift; sourceTree = "<group>"; };
+		4DCC120E1C790CB50087D4A8 /* RangeReplaceablePermuteCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeReplaceablePermuteCollection.swift; path = ../../Sources/RangeReplaceablePermuteCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,11 +79,11 @@
 		4D71B5731C77F78A0077E26D /* Permute */ = {
 			isa = PBXGroup;
 			children = (
-				4D71B5911C77F8100077E26D /* Permutation.swift */,
-				4DCC11EF1C78FAAD0087D4A8 /* PermuteCollectionType.swift */,
-				4DCC11E31C78F4310087D4A8 /* PermuteCollection.swift */,
-				4DCC11DF1C78F4110087D4A8 /* MutablePermuteCollection.swift */,
-				4DCC11E11C78F41A0087D4A8 /* RangeReplaceablePermuteCollection.swift */,
+				4DCC120B1C790CB50087D4A8 /* Permutation.swift */,
+				4DCC120D1C790CB50087D4A8 /* PermuteCollectionType.swift */,
+				4DCC120C1C790CB50087D4A8 /* PermuteCollection.swift */,
+				4DCC120A1C790CB50087D4A8 /* MutablePermuteCollection.swift */,
+				4DCC120E1C790CB50087D4A8 /* RangeReplaceablePermuteCollection.swift */,
 				4D71B5761C77F78A0077E26D /* Info.plist */,
 			);
 			path = Permute;
@@ -205,11 +205,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DCC11F01C78FAAD0087D4A8 /* PermuteCollectionType.swift in Sources */,
-				4DCC11E41C78F4310087D4A8 /* PermuteCollection.swift in Sources */,
-				4D71B5921C77F8100077E26D /* Permutation.swift in Sources */,
-				4DCC11E21C78F41A0087D4A8 /* RangeReplaceablePermuteCollection.swift in Sources */,
-				4DCC11E01C78F4110087D4A8 /* MutablePermuteCollection.swift in Sources */,
+				4DCC12111C790CB50087D4A8 /* PermuteCollection.swift in Sources */,
+				4DCC12101C790CB50087D4A8 /* Permutation.swift in Sources */,
+				4DCC12121C790CB50087D4A8 /* PermuteCollectionType.swift in Sources */,
+				4DCC120F1C790CB50087D4A8 /* MutablePermuteCollection.swift in Sources */,
+				4DCC12131C790CB50087D4A8 /* RangeReplaceablePermuteCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
