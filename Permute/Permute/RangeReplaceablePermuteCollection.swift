@@ -14,11 +14,11 @@ extension RangeReplaceableCollectionType where Index: BidirectionalIndexType, In
 
 public struct RangeReplaceablePermuteCollection<Base: RangeReplaceableCollectionType where Base.Index: BidirectionalIndexType, Base.Index: Comparable, Base.Index.Distance == Int> {
     public var base: Base
-    public var permutation: AnyPermuatation<Base.Index>
+    public var permutation: AnyPermutation<Base.Index>
     
     public init<P: PermutationType where P.Index == Base.Index>(_ collection: Base, withPermutation permutation: P) {
         self.base = collection
-        self.permutation = AnyPermuatation(permutation)
+        self.permutation = AnyPermutation(permutation)
     }
 
 }
@@ -34,7 +34,6 @@ extension RangeReplaceablePermuteCollection: MutableCollectionType {
     
     public subscript(index: Base.Index) -> Base.Generator.Element {
         get {
-            print("\(index) -> \(permutation[index])")
             return base[permutation[index]]
         }
         set {
@@ -77,7 +76,7 @@ extension RangeReplaceablePermuteCollection: RangeReplaceableCollectionType {
             let endIndex = base.endIndex
             let addedElementsRange = subRange.endIndex..<subRange.endIndex.advancedBy(delta)
             let oldPermutation = permutation
-            permutation = AnyPermuatation { index in
+            permutation = AnyPermutation { index in
                 if index < addedElementsRange.startIndex {
                     // Elements prior to insertion have not moved.
                     return oldPermutation[index]
@@ -97,7 +96,7 @@ extension RangeReplaceablePermuteCollection: RangeReplaceableCollectionType {
             // Account for removed elements
             let deletedElementsRange = subRange.endIndex.advancedBy(delta)..<subRange.endIndex
             let oldPermutation = permutation
-            permutation = AnyPermuatation { index in
+            permutation = AnyPermutation { index in
                 // Skip deleted elements, effectively decreasing everything's index
                 let elementIndex = index >= deletedElementsRange.startIndex ? index.advancedBy(deletedElementsRange.count) : index
     

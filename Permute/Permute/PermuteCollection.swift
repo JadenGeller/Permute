@@ -14,11 +14,11 @@ extension CollectionType {
 
 public struct PermuteCollection<Base: CollectionType> {
     public var base: Base
-    public var permutation: AnyPermuatation<Base.Index>
+    public var permutation: AnyPermutation<Base.Index>
 
     public init<P: PermutationType where P.Index == Base.Index>(_ collection: Base, withPermutation permutation: P) {
         self.base = collection
-        self.permutation = AnyPermuatation(permutation)
+        self.permutation = AnyPermutation(permutation)
     }
 }
 
